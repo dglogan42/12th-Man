@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twelfth Man — Australia Cricket Commentary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="pitch-overlay"></div>
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-icon">🏏</span>
+        <div>
+          <h1>Twelfth Man</h1>
+          <p class="tagline">Tests, ODIs &amp; T20s — Richie, Bill, Tony &amp; the gang</p>
+        </div>
+      </div>
+      <div class="ashes-badge">
+        <span class="urn">🇦🇺</span>
+        <span id="series-badge">Australia Cricket</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <section class="panel broadcast-panel">
+        <h2>📻 Listen Live</h2>
+        <p class="panel-hint">TuneIn, iHeartRadio &amp; Rova — real radio under spoof commentary</p>
+        <div id="radio-links" class="broadcast-links"></div>
+      </section>
+
+      <section class="panel broadcast-panel">
+        <h2>📺 Watch Live</h2>
+        <p class="panel-hint">FOX Sports, Sky Sports &amp; more alongside the Twelfth Man feed</p>
+        <div id="tv-links" class="broadcast-links"></div>
+      </section>
+
+      <section class="panel">
+        <h2>🏟️ Select Match</h2>
+        <div class="filter-row">
+          <select id="format-filter" class="series-filter" title="Format">
+            <option value="">All Formats</option>
+            <option value="test">Tests</option>
+            <option value="odi">ODIs</option>
+            <option value="t20">T20s</option>
+          </select>
+          <select id="series-filter" class="series-filter" title="Series">
+            <option value="">All Series</option>
+          </select>
+        </div>
+        <div id="match-list" class="match-list"></div>
+        <p id="api-status" class="api-status"></p>
+      </section>
+
+      <section class="panel controls-panel">
+        <h2>🎙️ Commentary Box</h2>
+        <div class="controls">
+          <button id="btn-start" class="btn btn-start">▶ Start Commentary</button>
+          <button id="btn-stop" class="btn btn-stop" disabled>⏸ Pause</button>
+          <button id="btn-reset" class="btn btn-reset">↺ Reset</button>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="auto-scroll" checked>
+          Auto-scroll feed
+        </label>
+      </section>
+
+      <section class="panel tts-panel">
+        <h2>🔊 Commentary Voice (TTS)</h2>
+        <p id="tts-status" class="tts-status">🔊 Google TTS (free)</p>
+        <label class="toggle">
+          <input type="checkbox" id="tts-enabled" checked>
+          Speak commentary aloud
+        </label>
+        <label class="toggle">
+          <input type="checkbox" id="tts-server" checked>
+          Use free Google TTS API
+        </label>
+        <p class="panel-hint">Each commentator uses a different accent — Bill (AU), Tony (UK), Darrell (US)</p>
+        <button id="btn-tts-test" class="btn btn-tts-test">🎤 Test Bill Lawry</button>
+      </section>
+
+      <section class="panel score-panel">
+        <h2>📊 Live Score</h2>
+        <div id="score-display" class="score-display">
+          <span class="score-main">—</span>
+          <span class="score-update"></span>
+        </div>
+      </section>
+    </aside>
+
+    <section class="commentary-area">
+      <div class="commentary-header">
+        <div class="live-indicator" id="live-indicator">
+          <span class="pulse"></span>
+          <span>OFF AIR</span>
+        </div>
+        <div class="commentator-legend">
+          <span class="legend-item" style="--c:#f5e6c8">Richie</span>
+          <span class="legend-item" style="--c:#ff6b6b">Bill</span>
+          <span class="legend-item" style="--c:#4ecdc4">Tony</span>
+          <span class="legend-item" style="--c:#ff9ff3">Darrell</span>
+          <span class="legend-item" style="--c:#ffd93d">Max</span>
+        </div>
+      </div>
+
+      <div id="commentary-feed" class="commentary-feed">
+        <div class="feed-welcome">
+          <p>"And welcome back to the SCG or the MCG or the Gabba or the WACA or wherever the hell we are."</p>
+          <p class="sub">Select a match and hit <strong>Start Commentary</strong> to begin the Twelfth Man experience.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Parody tribute to Billy Birmingham's <em>The Twelfth Man</em>. Not affiliated with FOX Sports, Sky Sports, or Cricket Australia.</p>
+    <p>Pair with live radio or TV:
+      <a href="https://tunein.com/" target="_blank" rel="noopener">TuneIn</a> ·
+      <a href="https://www.iheart.com/" target="_blank" rel="noopener">iHeartRadio</a> ·
+      <a href="https://www.rova.nz/" target="_blank" rel="noopener">Rova</a> ·
+      <a href="https://www.foxsports.com.au/cricket" target="_blank" rel="noopener">FOX Sports</a> ·
+      <a href="https://www.skysports.com/cricket" target="_blank" rel="noopener">Sky Sports</a>
+    </p>
+  </footer>
+
+  <script src="tts.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
