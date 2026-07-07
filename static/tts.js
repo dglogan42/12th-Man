@@ -77,6 +77,8 @@ async function playServerTts(line) {
     const blob = await res.blob();
     if (blob.size < 100) throw new Error('empty audio');
 
+    if (window.ClipStudio) ClipStudio.cacheLineAudio(line, blob);
+
     if (TTS.currentAudio) {
       TTS.currentAudio.pause();
       URL.revokeObjectURL(TTS.currentAudio.src);

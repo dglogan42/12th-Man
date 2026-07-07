@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="clip-studio/clip-studio.css">
 </head>
 <body>
   <div class="pitch-overlay"></div>
@@ -94,6 +95,12 @@
           <span class="score-update"></span>
         </div>
       </section>
+
+      <section class="panel clips-panel">
+        <h2>✂️ Clip &amp; Share</h2>
+        <p class="panel-hint">Tap ✂️ on any line — share to X, Bluesky, or your podcast</p>
+        <div id="clip-library" class="clip-library"></div>
+      </section>
     </aside>
 
     <section class="commentary-area">
@@ -131,6 +138,8 @@
     </p>
   </footer>
 
+  <script src="clip-studio/clip-studio.js"></script>
+  <script src="clip-init.js"></script>
   <script src="tts.js"></script>
   <script src="app.js"></script>
 </body>

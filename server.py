@@ -13,6 +13,7 @@ from urllib.parse import parse_qs, urlparse
 sys.path.insert(0, str(Path(__file__).parent))
 
 from commentary import CommentaryEngine, CricketDataFetcher
+from commentary.clips import APP_ID, generate_rss, list_clips, register_clip
 from commentary.tts import list_voices, synthesize
 
 PORT = int(os.environ.get("PORT", "8765"))
@@ -128,6 +129,16 @@ class CommentaryHandler(SimpleHTTPRequestHandler):
                 self.wfile.write(audio)
             else:
                 self._json_response({"error": "TTS synthesis failed"}, status=502)
+        elif path == "/api/clips":
+            self._json_response({"clips": list_clips(APP_ID), "app_id": APP_ID})
+        elif path == "/api/podcast/feed.rss":
+            host = self.headers.get("Host", f"localhost:{PORT}")
+            body = generate_rss(APP_ID, f"http://{host}").encode("utf-8")
+            self.send_response(200)
+            self.send_header("Content-Type", "application/rss+xml; charset=utf-8")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(body)
         elif path == "/":
             self.path = "/index.html"
             super().do_GET()
@@ -168,6 +179,18 @@ class CommentaryHandler(SimpleHTTPRequestHandler):
             session["lines"] = []
             fetcher.reset_demo(match_id)
             self._json_response({"status": "reset", "match_id": match_id})
+
+        elif parsed.path == "/api/clips":
+            clip = register_clip(
+                APP_ID,
+                text=data.get("text", ""),
+                announcer=data.get("announcer", "richie"),
+                commentator_name=data.get("commentator_name", "Richie Benaud"),
+                event_title=data.get("event_title", "Twelfth Man Cricket"),
+                caption=data.get("caption", ""),
+            )
+            host = self.headers.get("Host", f"localhost:{PORT}")
+            self._json_response({"clip": clip, "feed_url": f"http://{host}/api/podcast/feed.rss"})
 
         else:
             self.send_error(404)

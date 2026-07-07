@@ -183,7 +183,13 @@ function renderLine(line) {
       <div class="line-name">${line.commentator_name}</div>
       <div class="line-text">${line.text}</div>
       ${line.over ? `<div class="line-meta">Over ${line.over}${line.score ? ` · ${line.score}` : ''} · ${time}</div>` : `<div class="line-meta">${time}</div>`}
-    </div>`;
+    </div>
+    <button type="button" class="btn-clip-line" title="Clip &amp; share" aria-label="Clip audio">✂️</button>`;
+
+  div.querySelector('.btn-clip-line').addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (window.ClipStudio) ClipStudio.open(line);
+  });
 
   feed.appendChild(div);
 

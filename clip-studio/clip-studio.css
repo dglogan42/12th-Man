@@ -1,0 +1,231 @@
+/* Sports Clip Studio — shared clip & share UI */
+
+.btn-clip-line,
+.clip-studio-btn {
+  flex-shrink: 0;
+  align-self: flex-start;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  background: rgba(245, 128, 37, 0.15);
+  cursor: pointer;
+  font-size: 0.85rem;
+  opacity: 0.55;
+  transition: opacity 0.15s, background 0.15s, transform 0.1s;
+  color: inherit;
+  padding: 0;
+  line-height: 1;
+}
+
+.btn-clip-line:hover,
+.clip-studio-btn:hover {
+  opacity: 1;
+  background: rgba(245, 128, 37, 0.3);
+  transform: scale(1.05);
+}
+
+.clip-studio-panel {
+  border: 1px solid rgba(245, 128, 37, 0.35);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  margin-top: 0.5rem;
+}
+
+.clip-studio-panel h3 {
+  font-size: 0.85rem;
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.clip-library {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+.clip-empty { font-size: 0.75rem; opacity: 0.7; margin: 0; }
+
+.clip-library-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.clip-lib-info { flex: 1; min-width: 0; font-size: 0.72rem; }
+.clip-lib-info strong { display: block; font-size: 0.7rem; }
+.clip-lib-info span {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0.75;
+}
+
+.clip-lib-actions { display: flex; gap: 0.2rem; }
+
+.btn-clip-mini {
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  font-size: 0.65rem;
+  color: inherit;
+}
+
+.clip-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
+}
+
+.clip-modal[hidden] { display: none !important; }
+body.clip-modal-open { overflow: hidden; }
+
+.clip-modal-inner {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #0f1a2e;
+  color: #e8f0f8;
+  border: 1px solid rgba(245, 128, 37, 0.45);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.clip-modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: inherit;
+  cursor: pointer;
+}
+
+.clip-modal-inner h2 {
+  font-size: 1.25rem;
+  margin: 0 0 0.25rem;
+  color: #f58025;
+}
+
+.clip-modal-sub { font-size: 0.82rem; opacity: 0.75; margin: 0 0 1rem; }
+
+.clip-quote-wrap {
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid #00a8e8;
+  background: rgba(0, 168, 232, 0.08);
+  border-radius: 0 8px 8px 0;
+}
+
+.clip-quote { font-style: italic; margin: 0 0 0.35rem; font-size: 0.92rem; }
+.clip-quote-wrap cite { font-size: 0.78rem; font-style: normal; font-weight: 600; color: #00a8e8; }
+
+.clip-trim-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.45rem;
+  font-size: 0.8rem;
+}
+
+.clip-trim-row label { min-width: 88px; opacity: 0.8; }
+.clip-trim-row input[type="range"] { flex: 1; accent-color: #f58025; }
+
+.clip-duration { font-size: 0.78rem; color: #ffd60a; margin-bottom: 0.65rem; }
+
+.clip-preview { width: 100%; margin-bottom: 0.65rem; }
+
+.clip-caption-label { display: block; font-size: 0.78rem; opacity: 0.8; margin-bottom: 0.3rem; }
+
+.clip-caption {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.25);
+  color: inherit;
+  font-family: inherit;
+  font-size: 0.82rem;
+  resize: vertical;
+  margin-bottom: 0.65rem;
+  box-sizing: border-box;
+}
+
+.clip-actions-primary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+}
+
+.btn-clip {
+  padding: 0.4rem 0.75rem;
+  background: rgba(245, 128, 37, 0.15);
+  border: 1px solid #f58025;
+  border-radius: 8px;
+  color: inherit;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.clip-share-heading {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.7;
+  margin: 0.65rem 0 0.45rem;
+}
+
+.clip-share-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.4rem;
+}
+
+.btn-share {
+  padding: 0.45rem 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-share.twitter { border-color: #1d9bf0; }
+.btn-share.bluesky { border-color: #0085ff; }
+.btn-share.mastodon { border-color: #6364ff; }
+.btn-share.podcast { border-color: #9146ff; font-size: 0.68rem; }
+.btn-share.podcast-pack { grid-column: 1 / -1; border-color: #f58025; }
+
+.clip-rss-hint { font-size: 0.72rem; opacity: 0.75; margin-top: 0.5rem; line-height: 1.4; }
+.clip-rss-hint a { color: #f58025; }
+
+.clip-status { margin-top: 0.65rem; font-size: 0.78rem; color: #4ade80; min-height: 1.1em; }
+.clip-status.error { color: #f87171; }
