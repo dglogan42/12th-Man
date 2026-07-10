@@ -159,3 +159,6 @@ Player name parodies and commentator impersonations are affectionate satire for 
 ## License
 
 [MIT License](LICENSE) — Copyright (c) 2026 Twelfth Man Ashes Commentary contributors.
+## Media policy
+
+Ship original / free UI art only. Do not commit scraped site dumps, broadcaster logos, or third-party product images.
